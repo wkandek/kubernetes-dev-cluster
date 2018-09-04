@@ -25,6 +25,7 @@ vagrant up
 vagrant ssh master
 
 kubectl -n kube-system get nodes
+
 NAME      STATUS    ROLES     AGE       VERSION
 master    Ready     master    28m       v1.11.2
 node1     Ready     <none>    27m       v1.11.2
