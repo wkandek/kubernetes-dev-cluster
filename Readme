@@ -14,17 +14,45 @@ Ubuntu provisioning scripts embedded in Vagrant file. User must provide a KUBETO
 
 Flannel network overlay will be installed automatically.  
 
+Customization:
+
+Variables are defined at the top of the Vagrantgfile:
+
+Generate from another kubernetes cluster 'kubectl token generate token'
+KUBETOKEN = "04fe0c.e54e783eb61b2687" 
+
+This will be the cluster master and apiserver IP: 
+MASTER_IP = "172.16.35.100"
+
+THe following is required for 
+POD_NTW_CIDR = "10.244.0.0/16"
+BOX_IMAGE = "ubuntu/xenial64"
+NODE_COUNT = 3
+CPU = 4
+MEMORY = 8192
+
+
+
 Cluster Installation:
 
-git clone https://github.com/ecorbett135/k8s-ubuntu-vagrant
+$ git clone https://github.com/ecorbett135/k8s-ubuntu-vagrant
 
-cd k8s-ubuntu-vagrant
+$ cd k8s-ubuntu-vagrant
 
-vagrant up
+$ vagrant up
 
-vagrant ssh master
+...
+    worker3: Run 'kubectl get nodes' on the master to see this node join the cluster.
 
-kubectl -n kube-system get nodes
+real	7m4.092s .  <<< This is an actual build time of a 4 node cluster
+user	0m12.755s
+sys	0m7.203s
+
+
+
+$ vagrant ssh master
+
+$ kubectl -n kube-system get nodes
 
 NAME      STATUS    ROLES     AGE       VERSION
 master    Ready     master    28m       v1.11.2
