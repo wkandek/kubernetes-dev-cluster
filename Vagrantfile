@@ -8,7 +8,10 @@
 KUBETOKEN = "02fe0c.e57e783eb69b2687"
 MASTER_IP = "172.16.35.100"
 POD_NTW_CIDR = "10.244.0.0/16"
-
+BOX_IMAGE = "ubuntu/xenial64"
+NODE_COUNT = 3
+CPU = 4
+MEMORY = 8192
 
 $masterscript = <<-SCRIPT
 
@@ -80,11 +83,6 @@ SCRIPT
 #########################################
 # Create VMs Section
 #########################################
-
-BOX_IMAGE = "ubuntu/xenial64"
-NODE_COUNT = 3
-CPU = 4
-MEMORY = 8192
 
 Vagrant.configure("2") do |config|
 	config.vm.define "master" do |master|
