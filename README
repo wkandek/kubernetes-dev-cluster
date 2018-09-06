@@ -18,7 +18,7 @@ Customization:
 
 Variables are defined at the top of the Vagrantgfile:
 
-Generate from another kubernetes cluster 'kubectl token generate token'
+Generate from another kubernetes cluster 'kubectl token generate token' Hint: google "create a minikube cluster"
 KUBETOKEN = "04fe0c.e54e783eb61b2687" 
 
 This will be the cluster master and apiserver IP: 
