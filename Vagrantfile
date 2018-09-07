@@ -26,14 +26,11 @@ apt update && apt install -y ansible docker.io kubelet kubeadm kubectl=1.10.5-00
 systemctl enable kubelet && systemctl start kubelet
 systemctl enable docker && systemctl start docker
 
-CGROUP_DRIVER=$(sudo docker info | grep "Cgroup Driver" | awk '{print $3}')
-
+#CGROUP_DRIVER=$(sudo docker info | grep "Cgroup Driver" | awk '{print $3}')
 sed -i "s|KUBELET_KUBECONFIG_ARGS=|KUBELET_KUBECONFIG_ARGS=--cgroup-driver=$CGROUP_DRIVER |g" /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
-
 sed -i 's/10.96.0.10/10.3.3.10/g' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 
 systemctl daemon-reload
-
 systemctl stop kubelet && systemctl start kubelet
 
 kubeadm config images pull
@@ -44,8 +41,9 @@ cp -i /etc/kubernetes/admin.conf /home/vagrant/.kube/config
 chown $(id -u vagrant):$(id -g vagrant) /home/vagrant/.kube/config
 
 export KUBECONFIG=/etc/kubernetes/admin.conf
-
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+sleep 90
+kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
 
 SCRIPT
 
@@ -67,15 +65,11 @@ systemctl enable kubelet && systemctl start kubelet
 systemctl enable docker && systemctl start docker
 
 CGROUP_DRIVER=$(sudo docker info | grep "Cgroup Driver" | awk '{print $3}')
-
 sed -i "s|KUBELET_KUBECONFIG_ARGS=|KUBELET_KUBECONFIG_ARGS=--cgroup-driver=$CGROUP_DRIVER |g" /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
-
 sed -i 's/10.96.0.10/10.3.3.10/g' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 
 systemctl daemon-reload
-
 systemctl stop kubelet && systemctl start kubelet
-
 kubeadm join --token #{KUBETOKEN} #{MASTER_IP}:6443 --discovery-token-unsafe-skip-ca-verification
 
 SCRIPT
@@ -113,3 +107,4 @@ Vagrant.configure("2") do |config|
   end
  end
 end
+
