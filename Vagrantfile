@@ -42,7 +42,7 @@ chown $(id -u vagrant):$(id -g vagrant) /home/vagrant/.kube/config
 
 export KUBECONFIG=/etc/kubernetes/admin.conf
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-sleep 90
+sleep 91
 kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
 
 SCRIPT
