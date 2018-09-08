@@ -42,7 +42,7 @@ chown $(id -u vagrant):$(id -g vagrant) /home/vagrant/.kube/config
 
 export KUBECONFIG=/etc/kubernetes/admin.conf
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-sleep 91
+sleep 90
 kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
 
 SCRIPT
@@ -83,7 +83,7 @@ Vagrant.configure("2") do |config|
 		master.vm.box = BOX_IMAGE
 		master.vm.hostname = 'master'
 		master.vm.network :private_network, ip: "172.16.35.100"
-		master.vm.network :public_network, :bridge => "en1: Wi-Fi (Wireless)"
+#		master.vm.network :public_network, :bridge => "en1: Wi-Fi (Wireless)"
 		master.vm.provider :virtualbox do |v|
 			v.name = "master"
 			v.memory = MEMORY
@@ -97,7 +97,7 @@ Vagrant.configure("2") do |config|
 		worker.vm.box = BOX_IMAGE
 		worker.vm.hostname = "node#{i}"
 		worker.vm.network :private_network, ip: "172.16.35.10#{i}"
-		worker.vm.network :public_network, :bridge => "en1: Wi-Fi (Wireless)"
+#		worker.vm.network :public_network, :bridge => "en1: Wi-Fi (Wireless)"
 		worker.vm.provider :virtualbox do |v|
 			v.name = "node#{i}"
 			v.memory = MEMORY
