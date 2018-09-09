@@ -57,7 +57,7 @@ $ git clone https://github.com/ecorbett135/k8s-ubuntu-vagrant
 $ cd k8s-ubuntu-vagrant
 
 $ vagrant up
-```
+
 ...
     worker3: Run 'kubectl get nodes' on the master to see this node join the cluster.
 
@@ -75,7 +75,7 @@ master    Ready     master    28m       v1.11.2
 node1     Ready     <none>    27m       v1.11.2
 node2     Ready     <none>    26m       v1.11.2
 node3     Ready     <none>    24m       v1.11.2
-
+```
 
 
 
