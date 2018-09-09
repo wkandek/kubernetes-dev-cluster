@@ -7,10 +7,10 @@
 ##### III. Vagrantfile Customization
 - Variable Definitions
 #####  IV. Cluster Installation 
-#####     Step 1
-#####     Step 2
-#####     Step 3
-#####     Step 4
+- Step 1
+- Step 2
+- Step 3
+- Step 4
 #####   V. Aliases
 
 ## I. Installation Pre-reqs:
@@ -67,12 +67,12 @@ Variable       | Definition                                                     
 ## IV. Cluster Installation:
 
 
-## - Step 1 
+- Step 1 
 Download this repository 
 ```console
 $ git clone https://github.com/ecorbett135/k8s-ubuntu-vagrant
 ```
-## - Step 2 
+- Step 2 
 Install and configure the cluster
 ```console
 $ cd k8s-ubuntu-vagrant
@@ -82,7 +82,7 @@ Once installation completes  final line in output will look something like:
    ```console
    worker3: Run 'kubectl get nodes' on the master to see this node join the cluster.
    ```
-## - Step 3
+- Step 3
 ssh with port forward, check node status, start proxy and get dashboard token
 ```
 $ ssh -L 8001:127.0.0.1:8001 vagrant@172.16.35.100
@@ -98,7 +98,7 @@ node3     Ready     <none>    24m       v1.11.2
 $ks describe secret $(ks get secret | awk '/^admin-user/{print $1}') | awk '$1=="token:"{print $2}'
 eyJhbGciOiJSUzI1NiIsImwpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi11c2VyLXRva2VuLXg2OTR2Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImFkbWluLXVzZXIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiI3Y2F1MjJjZi1iNDZkLTExZTgtOWZkMS0wMjJmNjJjZDllMjIiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZS1zeXN0ZW06YWRtaW4tdXNlciJ9.PCGqgoVvJSFk8hP447cAi6VsLtvbQa_UxhdijdBK6P6i2TOfSzmTShI2gIyUGVOIiLp8RhbjbiZ_m9Cpi404dw5zKhjGcgUOUj-KpgpDgIDiO1GFeE6EHkrmni_ig0vbMF5AEemvtCdp6VS8sNqP6t-LatV-AL4S-K1i_N79wcpOCiIzdtD0itoXspz63hDt4zvRhGmLhAGIDPqT_8H79eOdxEkIjb-LmHJg6yvp0ApSCBGDJJRgDLRa-P_xS0m913EbPIK6O6gGB2zER0JB7nMdYxHByDJwKZwoZZjHp6h42f53CjKp9pjTXcufjMLyIcV80ui76PPrrB3VoWHlLQ
 ```
-## - Step 4 
+- Step 4 
 From local machine VM's are running on enter the following url or click below:
 
 http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
@@ -113,8 +113,3 @@ alias kcw='kubectl -o wide'
 alias ks='kubectl -n kube-system'
 alias ksw='kubectl -n kube-system -o wide'
 ```
-
-
-
-
-
