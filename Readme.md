@@ -23,13 +23,13 @@ The following variables are defined at the top of the Vagrantgfile.  Recommend u
 
 Variable Name | Default Value             |
 --------------|---------------------------|
-KUBETOKEN     | "02fe0c.e57e783eb69b2687" |
-MASTER_IP     |     "172.16.35.100"       |
-POD_NTW_CIDR  |     "10.244.0.0/16"       |
-BOX_IMAGE     |    "ubuntu/xenial64"      |
-NODE_COUNT    |           3               |
-CPU           |           1               |
-MEMORY        |          512              |
+`KUBETOKEN`   | "02fe0c.e57e783eb69b2687" |
+`MASTER_IP`   |     "172.16.35.100"       |
+`POD_NTW_CIDR`|     "10.244.0.0/16"       |
+`BOX_IMAGE`   |    "ubuntu/xenial64"      |
+`NODE_COUNT`  |           3               |
+`CPU`         |           1               |
+`MEMORY`      |          512              |
 
 ## Variable Definitions
 
@@ -41,13 +41,13 @@ $ kubectl token generate token
 ```
 Variable       | Definition                                                                                                  |
 ---------------|-------------------------------------------------------------------------------------------------------------|
-`CPU`          | Default is 1.  Recommend at least 2 if the system has the resources.                                        |
-`MEMORY`       | Default is 512. Recomend a minimum of 1024 is the system has the resources.                                 |
-`NODE_COUNT`   | Default is 2. Set the desired number of worker nodes (Note: There is no variable for master node):          |
+`KUBETOKEN`    | Generate a unique token as described above.                                                                 |
 `MASTER_IP`    | Default is "172.16.35.100". The cluster master and apiserver IP. Do not overlap `POD_NTW_CIDR`              |
 `POD_NTW_CIDR` | Default is "10.244.0.0/16". This value is [required] for Flannel to run.                                    |
 `BOX_IMAGE`    | Default is "ubuntu/xenial64". Changing OS value is not recommended as scripts may break.                    |
-
+`NODE_COUNT`   | Default is 2. Set the desired number of worker nodes (Note: There is no variable for master node).          |
+`CPU`          | Default is 1.  Recommend at least 2 if the system has the resources.                                        |
+`MEMORY`       | Default is 512. Recomend a minimum of 1024 is the system has the resources.                                 |
 ## Cluster Installation:
 ```console
 $ git clone https://github.com/ecorbett135/k8s-ubuntu-vagrant
