@@ -5,6 +5,7 @@
 1. Install [Vagrant](https://www.vagrantup.com/)
 2. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 3. Install [VirtualBox Extensions](https://download.virtualbox.org/virtualbox/5.2.18/Oracle_VM_VirtualBox_Extension_Pack-5.2.18.vbox-extpack)
+4. Install [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/
 
 ## Overview:
 
@@ -18,12 +19,20 @@ Kubernetes Dashboard will also be installed
 
 ## Customization:
 
-Variables are defined at the top of the Vagrantgfile:
+Variables are defined at the top of the Vagrantgfile. Recommend using a command line text editor such as vi or nedit. 
 
-Generate from another kubernetes cluster 'kubectl token generate token' 
-Hint: [install minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)
+[The variables that require user customization:]
 
-KUBETOKEN = "04fe0c.e54e783eb61b2687" 
+{KUBETOKEN}
+Generate from another kubernetes cluster by running the following command in Minikube VM':
+$ kubectl token generate token
+
+CPU
+Default is 4.  Depending on the number of Physical cores on 
+
+
+MEMORY = 8192
+ 
 
 This will be the cluster master and apiserver IP: 
 MASTER_IP = "172.16.35.100"
@@ -38,8 +47,6 @@ Set the number of worker nodes (Note: There is no variable for master node):
 NODE_COUNT = 3
 
 Set VM compute resources for all cluster nodes:
-CPU = 4
-MEMORY = 8192
 
 
 
