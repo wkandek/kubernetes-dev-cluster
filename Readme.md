@@ -1,12 +1,12 @@
-Vagrant VirtualBox Kubernetes Cluster 
+# Vagrant VirtualBox Kubernetes Cluster 
 
-Prerequisites:
+## Prerequisites:
 
 1. Install Vagrant
 2. Install VirtualBox
   a. Install VirtualBox Extensions
 
-Overview:
+## Overview:
 
 The Vagrantfile will install and configure a running Kubernetes (latest) cluster on Ubuntu 16.04
 
@@ -16,7 +16,7 @@ Flannel network overlay will be installed automatically.
 
 Kubernetes Dashboard will also be installed 
 
-Customization:
+## Customization:
 
 Variables are defined at the top of the Vagrantgfile:
 
@@ -43,7 +43,7 @@ MEMORY = 8192
 
 
 
-Cluster Installation:
+## Cluster Installation:
 
 $ git clone https://github.com/ecorbett135/k8s-ubuntu-vagrant
 
