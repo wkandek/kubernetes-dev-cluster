@@ -33,14 +33,13 @@ MEMORY        |          512              |
 
 ## Variable Definitions
 
-
-*KUBETOKEN
-REQUIRED: Populate this variable by generating a token from another kubernetes cluster by running the following command in Minikube VM': 
+`KUBETOKEN`Generate a unique token from the Minikube VM using the following command: 
 
 ```console
 $ kubectl token generate token
 04ff0b.e57e683ec69b2587
 ```
+
 `CPU`
 Default is 1.  Recommend at least 2 if the system has the resources.
 
@@ -49,7 +48,7 @@ Default is 512. Recomend a minimum of 1024 is the system has the resources.
 
 `NODE_COUNT` Default is 2. Set the desired number of worker nodes (Note: There is no variable for master node):
 
-`MASTER_IP` Default is "172.16.35.100" . This will be the cluster master and apiserver IP. Do not overlap POD_NTW_CIDR.
+`MASTER_IP` Default is "172.16.35.100" . This will be the cluster master and apiserver IP. Do not overlap `POD_NTW_CIDR`.
 
 `POD_NTW_CIDR` Default is "10.244.0.0/16". This value is [required] for Flannel to run.
  
