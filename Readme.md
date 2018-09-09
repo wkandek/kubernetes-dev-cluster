@@ -11,7 +11,7 @@
 
 The Vagrantfile will install and configure a running Kubernetes (latest) cluster on Ubuntu 16.04
 
-Ubuntu provisioning scripts embedded in Vagrant file. User must provide a KUBETOKEN.
+Ubuntu provisioning scripts embedded in Vagrant file. User must provide a unique token value for `KUBETOKEN`.
 
 Flannel network overlay will be installed automatically. 
 
