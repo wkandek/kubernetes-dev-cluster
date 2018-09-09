@@ -21,32 +21,32 @@ Kubernetes Dashboard will also be installed
 
 Variables are defined at the top of the Vagrantgfile. Recommend using a command line text editor such as vi or nedit. 
 
-[The variables that require user customization:]
+These variables require user customization (except in the case where the defaults make sense for physical system this cluster will run on) 
 
-{KUBETOKEN}
-Generate from another kubernetes cluster by running the following command in Minikube VM':
+KUBETOKEN
+Populate this variable by generating a token from another kubernetes cluster by running the following command in Minikube VM':
 $ kubectl token generate token
+04ff0b.e57e683ec69b2587
 
 CPU
-Default is 4.  Depending on the number of Physical cores on 
+Default is 1.  Recommend at least 2 if the system has the resources.
 
+MEMORY
+Default is 512. Recomend a minimum of 1024 is the system has the resources. 
 
-MEMORY = 8192
+NODE_COUNT 
+Default is 2. Set the desired number of worker nodes (Note: There is no variable for master node):
+
+Recommend leaving the following values as is:
+
+MASTER_IP 
+Default is "172.16.35.100" . This will be the cluster master and apiserver IP. Can be changed but do not overlap POD_NTW_CIDR.
+
+POD_NTW_CIDR
+Default is "10.244.0.0/16". This value is required for Flannel to run.
  
-
-This will be the cluster master and apiserver IP: 
-MASTER_IP = "172.16.35.100"
-
-THe following is required for Flannel to run:
-POD_NTW_CIDR = "10.244.0.0/16"
-
-Operating System image - suggest leaving the default:
-BOX_IMAGE = "ubuntu/xenial64"
-
-Set the number of worker nodes (Note: There is no variable for master node):
-NODE_COUNT = 3
-
-Set VM compute resources for all cluster nodes:
+BOX_IMAGE
+Default is  "ubuntu/xenial64" . This is the  Operating System image - suggest leaving the default or embedded shell script may require major modifications. 
 
 
 
