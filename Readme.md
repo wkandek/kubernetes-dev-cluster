@@ -44,9 +44,9 @@ Variable       | Definition                                                     
 `CPU`          | Default is 1.  Recommend at least 2 if the system has the resources.                                        |
 `MEMORY`       | Default is 512. Recomend a minimum of 1024 is the system has the resources.                                 |
 `NODE_COUNT`   | Default is 2. Set the desired number of worker nodes (Note: There is no variable for master node):          |
-`MASTER_IP`    | Default is "172.16.35.100" . This will be the cluster master and apiserver IP. Do not overlap `POD_NTW_CIDR`|
+`MASTER_IP`    | Default is "172.16.35.100". The cluster master and apiserver IP. Do not overlap `POD_NTW_CIDR`              |
 `POD_NTW_CIDR` | Default is "10.244.0.0/16". This value is [required] for Flannel to run.                                    |
-`BOX_IMAGE`    | Default is "ubuntu/xenial64" . Changing OS value is not recommended as scripts may break.                   |
+`BOX_IMAGE`    | Default is "ubuntu/xenial64". Changing OS value is not recommended as scripts may break.                    |
 
 ## Cluster Installation:
 ```console
