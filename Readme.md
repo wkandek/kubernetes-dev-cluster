@@ -33,18 +33,17 @@ MEMORY        |          512              |
 
 ## Variable Definitions
 
-`KUBETOKEN`Generate a unique token from the Minikube VM using the following command: 
+`KUBETOKEN` Generate a unique token from the Minikube VM using the following command: 
 
 ```console
 $ kubectl token generate token
 04ff0b.e57e683ec69b2587
 ```
+Variable | Definition|
+----------------------
+`CPU` Default is 1.  Recommend at least 2 if the system has the resources.
 
-`CPU`
-Default is 1.  Recommend at least 2 if the system has the resources.
-
-`MEMORY`
-Default is 512. Recomend a minimum of 1024 is the system has the resources. 
+`MEMORY` Default is 512. Recomend a minimum of 1024 is the system has the resources. 
 
 `NODE_COUNT` Default is 2. Set the desired number of worker nodes (Note: There is no variable for master node):
 
