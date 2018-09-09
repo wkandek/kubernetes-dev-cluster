@@ -7,6 +7,7 @@
 ##### III. Vagrantfile Customization
 #####  IV. Variable Definitions
 #####   V. Cluster Installation
+---- Step 1
 
 ## I. Installation Pre-reqs:
 On the local machine (MacOS,Windows,Linux) install the following applications in the order listed below:
