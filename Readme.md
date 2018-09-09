@@ -12,6 +12,7 @@
 - Step 3
 - Step 4
 ####   V. Aliases
+#
 
 ## I. Installation Pre-reqs:
 On the local machine (MacOS,Windows,Linux) install the following applications in the order listed below:
