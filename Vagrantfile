@@ -1,4 +1,4 @@
-# -*- mode: ruby -*-
+#-*- mode: ruby -*-
 # vi: set ft=ruby :
 
 #########################################
@@ -8,43 +8,85 @@
 KUBETOKEN = "02fe0c.e57e783eb69b2687"
 MASTER_IP = "172.16.35.100"
 POD_NTW_CIDR = "10.244.0.0/16"
-BOX_IMAGE = "ubuntu/xenial64"
-NODE_COUNT = 3
-CPU = 4
-MEMORY = 8192
+BOX_IMAGE = "ubuntu/bionic64"
+NODE_COUNT = 2
+CPU = 1
+MEMORY = 1024
 
 $masterscript = <<-SCRIPT
 
+echo "Configuring swap space off!"
 swapoff -a
 sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
+echo "Setting up ssh to allow password authetication"
+mv /etc/ssh/sshd_config /etc/ssh/sshd_config.orig
+sed -e 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config.orig > /etc/ssh/sshd_config
+systemctl reload sshd
+
+echo "Setting up kubernetes repository!"
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
 deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF
-apt update && apt install -y ansible docker.io kubelet kubeadm kubectl=1.10.5-00
-systemctl enable kubelet && systemctl start kubelet
-systemctl enable docker && systemctl start docker
 
-CGROUP_DRIVER=$(sudo docker info | grep "Cgroup Driver" | awk '{print $3}')
-sed -i "s|KUBELET_KUBECONFIG_ARGS=|KUBELET_KUBECONFIG_ARGS=--cgroup-driver=$CGROUP_DRIVER |g" /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
-sed -i 's/10.96.0.10/10.3.3.10/g' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+echo "Installing: ansible docker.io kubelet kubeadm kubectl"
+apt update && apt install -y ansible docker.io kubelet kubeadm kubectl
+systemctl enable kubelet && systemctl restart kubelet
+systemctl enable docker && systemctl restart docker
 
-systemctl daemon-reload
-systemctl stop kubelet && systemctl start kubelet
-
+echo "Getting kube images..."
 kubeadm config images pull
+
+echo "Initializing k8s Cluster"
 kubeadm init --pod-network-cidr=#{POD_NTW_CIDR} --apiserver-advertise-address=#{MASTER_IP} --token #{KUBETOKEN} --token-ttl 0
 
+echo "Setting environment variables"
 mkdir -p /home/vagrant/.kube
 cp -i /etc/kubernetes/admin.conf /home/vagrant/.kube/config
 chown $(id -u vagrant):$(id -g vagrant) /home/vagrant/.kube/config
-
+echo "alias kc='kubectl'" >> /home/vagrant/.bashrc
+echo "alias kcw='kubectl -o wide'" >> /home/vagrant/.bashrc
+echo "alias ks='kubectl -n kube-system'" >> /home/vagrant/.bashrc
+echo "alias ksw='kubectl -n kube-system -o wide'" >> /home/vagrant/.bashrc
 export KUBECONFIG=/etc/kubernetes/admin.conf
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-sleep 90
-kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
 
+echo "Installing Flannel network overlay"
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+sleep 45
+
+echo "Installing Kubernetes Dashboard"
+kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+sleep 45
+
+echo "Creating Dashboard ClusterRoleBinding..."
+cat << EOF > /home/vagrant/admin-user-crb.yaml
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kube-system
+EOF
+
+kubectl create -f /home/vagrant/admin-user-crb.yaml
+
+echo "Creating Dashboard ServiceAccount..."
+cat << EOF > /home/vagrant/admin-user-sa.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kube-system
+EOF
+
+kubectl create -f /home/vagrant/admin-user-sa.yaml
 SCRIPT
 
 #########################################
@@ -53,23 +95,28 @@ SCRIPT
 
 $workerscript = <<-SCRIPT
 
+echo "Configuring swap space off!"
 swapoff -a
 sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
+echo "Setting up ssh to allow password authetication"
+mv /etc/ssh/sshd_config /etc/ssh/sshd_config.orig
+sed -e 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config.orig > /etc/ssh/sshd_config
+systemctl reload sshd
+
+echo "Setting up kubenetes repository!"
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
 deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF
+
+echo "Installing: ansible docker.io kubelet kubeadm kubectl"
 apt update && apt install -y ansible docker.io kubelet kubeadm kubectl
-systemctl enable kubelet && systemctl start kubelet
-systemctl enable docker && systemctl start docker
+systemctl enable kubelet && systemctl restart kubelet
+systemctl enable docker && systemctl restart docker
 
-CGROUP_DRIVER=$(sudo docker info | grep "Cgroup Driver" | awk '{print $3}')
-sed -i "s|KUBELET_KUBECONFIG_ARGS=|KUBELET_KUBECONFIG_ARGS=--cgroup-driver=$CGROUP_DRIVER |g" /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
-sed -i 's/10.96.0.10/10.3.3.10/g' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 
-systemctl daemon-reload
-systemctl stop kubelet && systemctl start kubelet
+echo "Joining k8s cluster!"
 kubeadm join --token #{KUBETOKEN} #{MASTER_IP}:6443 --discovery-token-unsafe-skip-ca-verification
 
 SCRIPT
@@ -83,7 +130,6 @@ Vagrant.configure("2") do |config|
 		master.vm.box = BOX_IMAGE
 		master.vm.hostname = 'master'
 		master.vm.network :private_network, ip: "172.16.35.100"
-#		master.vm.network :public_network, :bridge => "en1: Wi-Fi (Wireless)"
 		master.vm.provider :virtualbox do |v|
 			v.name = "master"
 			v.memory = MEMORY
@@ -93,11 +139,10 @@ Vagrant.configure("2") do |config|
 	end
 
 (1..NODE_COUNT).each do |i|
-	config.vm.define "worker#{i}" do |worker|
+	config.vm.define "node#{i}" do |worker|
 		worker.vm.box = BOX_IMAGE
 		worker.vm.hostname = "node#{i}"
 		worker.vm.network :private_network, ip: "172.16.35.10#{i}"
-#		worker.vm.network :public_network, :bridge => "en1: Wi-Fi (Wireless)"
 		worker.vm.provider :virtualbox do |v|
 			v.name = "node#{i}"
 			v.memory = MEMORY
@@ -107,4 +152,3 @@ Vagrant.configure("2") do |config|
   end
  end
 end
-
