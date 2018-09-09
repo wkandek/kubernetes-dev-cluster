@@ -2,19 +2,19 @@
 
 ## Contents
 
-####   I. Installation Pre-reqs
-####  II. Installation Overview 
+####   I. Sofware Pre-reqs
+####  II. Cluster Installation Overview 
 #### III. Vagrantfile Customization
 - Variable Definitions
 ####  IV. Cluster Installation 
-  - Step 1
+- Step 1
 - Step 2
 - Step 3
 - Step 4
 ####   V. Aliases
 #
 
-## I. Installation Pre-reqs:
+## I. Software Pre-reqs:
 On the local machine (MacOS,Windows,Linux) install the following applications in the order listed below:
 
 ##### 1. [Vagrant](https://www.vagrantup.com/)
@@ -22,7 +22,7 @@ On the local machine (MacOS,Windows,Linux) install the following applications in
 ##### 3. [VirtualBox Extensions](https://download.virtualbox.org/virtualbox/5.2.18/Oracle_VM_VirtualBox_Extension_Pack-5.2.18.vbox-extpack)
 ##### 4. [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)
 
-## II. Installation Overview:
+## II. Cluster Installation Overview:
 
 The Vagrantfile will install and configure a running Kubernetes (latest) cluster on Ubuntu 18.04 LTS (bionic64)
 
