@@ -1,17 +1,22 @@
-   # Vagrant VirtualBox Kubernetes Cluster 
+# Vagrant VirtualBox Kubernetes Cluster 
 
+## Contents
 
+  I. Installation Pre-reqs
+ II. Installation Overview 
+III. Vagrantfile Customization
+     A. Variable Definitions
+ IV. Cluster Installation
 
-
-
-## Prerequisites:
+## I. Installation Pre-reqs:
+On the local machine (MacOS,Windows,Linux) install the following applications in the order listed below:
 
 1. Install [Vagrant](https://www.vagrantup.com/)
 2. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 3. Install [VirtualBox Extensions](https://download.virtualbox.org/virtualbox/5.2.18/Oracle_VM_VirtualBox_Extension_Pack-5.2.18.vbox-extpack)
 4. Install [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)
 
-## Overview:
+## II. Installation Overview:
 
 The Vagrantfile will install and configure a running Kubernetes (latest) cluster on Ubuntu 18.04 LTS (bionic64)
 
@@ -23,9 +28,9 @@ Currently Flannel is the only network overlay the provisioning script provides.
 
 Kubernetes Dashboard will also be deployed with rbac token authentication.
 
-## Customize the Vagrantfile before Installation:
+## III. Vagrantfile Customization:
 
-The following variables are defined at the top of the Vagrantgfile.  Recommend using a command line text editor such as vi or nedit. KUBEADM must be a uniquely generated value, instructions are provided in the "Variable Definitions" section below. 
+The following variables are defined at the top of the Vagrantgfile.  Recommend using a command line text editor such as vi or nedit. `KUBEADM` [must be a uniquely generated value], instructions are provided in the "Variable Definitions" section below. 
 
 Variable Name | Default Value             |
 --------------|---------------------------|
@@ -37,7 +42,7 @@ Variable Name | Default Value             |
 `CPU`         |           1               |
 `MEMORY`      |          1024             |
 
-## Variable Definitions
+### A. Variable Definitions
 
 `KUBETOKEN` Generate a unique token from the Minikube VM using the following command: 
 
@@ -54,7 +59,7 @@ Variable       | Definition                                                     
 `NODE_COUNT`   | Default is 2. Set the desired number of worker nodes (Note: There is no variable for master node).          |
 `CPU`          | Default is 1.  Recommend at least 2 if the system has the resources.                                        |
 `MEMORY`       | Default is 1024. Recomend a minimum of 1024 is the system has the resources.                                |
-## Cluster Installation:
+## V. Cluster Installation:
 
 
 ## Step 1 
