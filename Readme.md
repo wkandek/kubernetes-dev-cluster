@@ -47,7 +47,7 @@ Variable       | Definition                                                     
 `MASTER_IP`    | Default is "172.16.35.100" . This will be the cluster master and apiserver IP. Do not overlap `POD_NTW_CIDR`|
 `POD_NTW_CIDR` | Default is "10.244.0.0/16". This value is [required] for Flannel to run.                                    |
 `BOX_IMAGE`    | Default is "ubuntu/xenial64" . Changing OS value is not recommended as scripts may break.                   |
----------------|-------------------------------------------------------------------------------------------------------------|
+
 ## Cluster Installation:
 ```console
 $ git clone https://github.com/ecorbett135/k8s-ubuntu-vagrant
