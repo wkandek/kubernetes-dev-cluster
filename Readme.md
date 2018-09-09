@@ -36,7 +36,8 @@ CPU           | 1                         |
 MEMORY        | 512                       |
 
 Variable Definitaions
-KUBETOKEN 
+
+**KUBETOKEN 
 
 Populate this variable by generating a token from another kubernetes cluster by running the following command in Minikube VM': 
 
@@ -44,13 +45,15 @@ Populate this variable by generating a token from another kubernetes cluster by 
 $ kubectl token generate token
 04ff0b.e57e683ec69b2587
 ```
-CPU
+**CPU
+
 Default is 1.  Recommend at least 2 if the system has the resources.
 
-MEMORY
+**MEMORY
+
 Default is 512. Recomend a minimum of 1024 is the system has the resources. 
 
-NODE_COUNT 
+**NODE_COUNT 
 Default is 2. Set the desired number of worker nodes (Note: There is no variable for master node):
 
 Recommend leaving the following values as is:
