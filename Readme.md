@@ -51,13 +51,13 @@ Default is  "ubuntu/xenial64" . This is the  Operating System image - suggest le
 
 
 ## Cluster Installation:
-
+```conesole
 $ git clone https://github.com/ecorbett135/k8s-ubuntu-vagrant
 
 $ cd k8s-ubuntu-vagrant
 
 $ vagrant up
-
+```
 ...
     worker3: Run 'kubectl get nodes' on the master to see this node join the cluster.
 
