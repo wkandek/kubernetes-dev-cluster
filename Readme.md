@@ -2,16 +2,16 @@
 
 ## Contents
 
-######   I. Installation Pre-reqs
-######  II. Installation Overview 
-###### III. Vagrantfile Customization
-######  IV. Variable Definitions
-######   V. Cluster Installation
+#####   I. Installation Pre-reqs
+#####  II. Installation Overview 
+##### III. Vagrantfile Customization
+#####  IV. Variable Definitions
+#####   V. Cluster Installation
 
 ## I. Installation Pre-reqs:
 On the local machine (MacOS,Windows,Linux) install the following applications in the order listed below:
 
-1. Install [Vagrant](https://www.vagrantup.com/)
+#### 1. Install [Vagrant](https://www.vagrantup.com/)
 2. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 3. Install [VirtualBox Extensions](https://download.virtualbox.org/virtualbox/5.2.18/Oracle_VM_VirtualBox_Extension_Pack-5.2.18.vbox-extpack)
 4. Install [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)
