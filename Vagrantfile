@@ -5,7 +5,7 @@
 # Variables Section. See https://github.com/ecorbett135/k8s-ubuntu-vagrant for details
 ######################################################################################
 
-KUBETOKEN = "02fe0c.e57e783eb69b2687"
+KUBETOKEN = "03fe0c.e57e7831b69b2687"
 MASTER_IP = "172.16.35.100"
 POD_NTW_CIDR = "10.244.0.0/16"
 BOX_IMAGE = "ubuntu/bionic64"
