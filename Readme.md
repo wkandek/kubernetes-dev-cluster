@@ -57,14 +57,8 @@ $ git clone https://github.com/ecorbett135/k8s-ubuntu-vagrant
 $ cd k8s-ubuntu-vagrant
 
 $ vagrant up
-
-...
+# Once installation completes  final line in output will look something like: 
     worker3: Run 'kubectl get nodes' on the master to see this node join the cluster.
-
-real	7m4.092s .  <<< This is an actual build time of a 4 node cluster
-user	0m12.755s
-sys	0m7.203s
-
 
 $ vagrant ssh master
 
