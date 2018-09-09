@@ -12,13 +12,15 @@ The Vagrantfile will install and configure a running Kubernetes (latest) cluster
 
 Ubuntu provisioning scripts embedded in Vagrant file. User must provide a KUBETOKEN.
 
-Flannel network overlay will be installed automatically.  
+Flannel network overlay will be installed automatically. 
+
+Kubernetes Dashboard will also be installed 
 
 Customization:
 
 Variables are defined at the top of the Vagrantgfile:
 
-Generate from another kubernetes cluster 'kubectl token generate token' Hint: google "create a minikube cluster"
+Generate from another kubernetes cluster 'kubectl token generate token' Hint: [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)
 KUBETOKEN = "04fe0c.e54e783eb61b2687" 
 
 This will be the cluster master and apiserver IP: 
