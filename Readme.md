@@ -21,18 +21,21 @@ Kubernetes Dashboard will also be installed
 
 Variables are defined at the top of the Vagrantgfile. Recommend using a command line text editor such as vi or nedit. 
 
-These variables require user customization (except in the case where the defaults make sense for physical system this cluster will run on) 
+**These variables require user customization (except in the case where the defaults make sense for physical system this cluster will run on) 
 
 
 
-Variable Name | Default Value |
---------------|---------------|
-KUBEADM .     | See Below .   |
-CPU           |     1         |
+Variable Name | Default Value             |
+--------------|---------------------------|
+** KUBETOKEN  | "02fe0c.e57e783eb69b2687" |
+MASTER_IP     | "172.16.35.100"           |
+POD_NTW_CIDR  | "10.244.0.0/16"           |
+BOX_IMAGE     | "ubuntu/xenial64"         |
+NODE_COUNT    | 3                         |
+CPU           | 1                         |
+MEMORY        | 512                       |
 
-
-
-Variable 
+Variable Definitaions
 KUBETOKEN 
 
 Populate this variable by generating a token from another kubernetes cluster by running the following command in Minikube VM': 
