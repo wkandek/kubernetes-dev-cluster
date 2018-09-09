@@ -31,7 +31,7 @@ Variable Name | Default Value             |
 `BOX_IMAGE`   |    "ubuntu/xenial64"      |
 `NODE_COUNT`  |           3               |
 `CPU`         |           1               |
-`MEMORY`      |          512              |
+`MEMORY`      |          1024             |
 
 ## Variable Definitions
 
@@ -49,7 +49,7 @@ Variable       | Definition                                                     
 `BOX_IMAGE`    | Default is "ubuntu/xenial64". Changing OS value is not recommended as scripts may break.                    |
 `NODE_COUNT`   | Default is 2. Set the desired number of worker nodes (Note: There is no variable for master node).          |
 `CPU`          | Default is 1.  Recommend at least 2 if the system has the resources.                                        |
-`MEMORY`       | Default is 512. Recomend a minimum of 1024 is the system has the resources.                                 |
+`MEMORY`       | Default is 1024. Recomend a minimum of 1024 is the system has the resources.                                |
 ## Cluster Installation:
 
 
@@ -85,7 +85,7 @@ $ks describe secret $(ks get secret | awk '/^admin-user/{print $1}') | awk '$1==
 eyJhbGciOiJSUzI1NiIsImwpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi11c2VyLXRva2VuLXg2OTR2Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImFkbWluLXVzZXIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiI3Y2F1MjJjZi1iNDZkLTExZTgtOWZkMS0wMjJmNjJjZDllMjIiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZS1zeXN0ZW06YWRtaW4tdXNlciJ9.PCGqgoVvJSFk8hP447cAi6VsLtvbQa_UxhdijdBK6P6i2TOfSzmTShI2gIyUGVOIiLp8RhbjbiZ_m9Cpi404dw5zKhjGcgUOUj-KpgpDgIDiO1GFeE6EHkrmni_ig0vbMF5AEemvtCdp6VS8sNqP6t-LatV-AL4S-K1i_N79wcpOCiIzdtD0itoXspz63hDt4zvRhGmLhAGIDPqT_8H79eOdxEkIjb-LmHJg6yvp0ApSCBGDJJRgDLRa-P_xS0m913EbPIK6O6gGB2zER0JB7nMdYxHByDJwKZwoZZjHp6h42f53CjKp9pjTXcufjMLyIcV80ui76PPrrB3VoWHlLQ
 ```
 ## Step 4 
-From local machine VM's are running on enter the following url:
+From local machine VM's are running on enter the following url or click below:
 
 http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
 
