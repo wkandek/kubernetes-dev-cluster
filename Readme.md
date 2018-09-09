@@ -58,8 +58,8 @@ Download this repository
 ```console
 $ git clone https://github.com/ecorbett135/k8s-ubuntu-vagrant
 ```
-## Step 2
-# Install and configure the cluster
+## Step 2 
+Install and configure the cluster
 ```console
 $ cd k8s-ubuntu-vagrant
 $ vagrant up
