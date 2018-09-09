@@ -11,7 +11,7 @@
 
 The Vagrantfile will install and configure a running Kubernetes (latest) cluster on Ubuntu 18.04 LTS (bionic64)
 
-Ubuntu provisioning scripts embedded in Vagrant file. This is a fairly straight forword bash shell script. Check the echo statements in the code to understand the operations. 
+Ubuntu provisioning scripts embedded in Vagrant file. This is a fairly straight forward bash shell script. Check the echo statements in the code to understand the operations. 
 
 User should edit variables and is required to provide a unique token value for `KUBETOKEN`. Do not skip the Minikube pre-requisite as that is required for generationg the token. 
 
@@ -89,6 +89,16 @@ From local machine VM's are running on enter the following url or click below:
 
 http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
 
+
+## Aliases
+
+Note that the master node .bashrc is configured with some aliases:
+```console
+alias kc='kubectl'
+alias kcw='kubectl -o wide'
+alias ks='kubectl -n kube-system'
+alias ksw='kubectl -n kube-system -o wide'
+```
 
 
 
