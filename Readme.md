@@ -8,7 +8,7 @@
 
 III. Vagrantfile Customization
 
-      A. Variable Definitions
+   A. Variable Definitions
 
 IV. Cluster Installation
 
