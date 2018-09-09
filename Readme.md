@@ -2,7 +2,7 @@
 
 ## Contents
 
-####   I. Sofware Pre-reqs
+####   I. Software Pre-reqs
 ####  II. Cluster Installation Overview 
 #### III. Vagrantfile Customization
 - Variable Definitions
