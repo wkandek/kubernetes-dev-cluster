@@ -5,9 +5,9 @@
 #####   I. Installation Pre-reqs
 #####  II. Installation Overview 
 ##### III. Vagrantfile Customization
-#####  IV. Variable Definitions
-#####   V. Cluster Installation
-- --- Step 1
+#####   - Variable Definitions
+#####  IV. Cluster Installation
+            - Step 1
 
 ## I. Installation Pre-reqs:
 On the local machine (MacOS,Windows,Linux) install the following applications in the order listed below:
@@ -43,7 +43,7 @@ Variable Name | Default Value             |
 `CPU`         |           1               |
 `MEMORY`      |          1024             |
 
-### A. Variable Definitions
+### - Variable Definitions
 
 `KUBETOKEN` Generate a unique token from the Minikube VM using the following command: 
 
@@ -60,7 +60,7 @@ Variable       | Definition                                                     
 `NODE_COUNT`   | Default is 2. Set the desired number of worker nodes (Note: There is no variable for master node).          |
 `CPU`          | Default is 1.  Recommend at least 2 if the system has the resources.                                        |
 `MEMORY`       | Default is 1024. Recomend a minimum of 1024 is the system has the resources.                                |
-## V. Cluster Installation:
+## IV. Cluster Installation:
 
 
 ## Step 1 
