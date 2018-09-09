@@ -86,6 +86,7 @@ eyJhbGciOiJSUzI1NiIsImwpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiw
 ```
 ## Step 4 
 From local machine VM's are running on enter the following url:
+
 http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
 
 
