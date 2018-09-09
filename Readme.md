@@ -23,11 +23,15 @@ Variables are defined at the top of the Vagrantgfile. Recommend using a command 
 
 These variables require user customization (except in the case where the defaults make sense for physical system this cluster will run on) 
 
-KUBETOKEN
-Populate this variable by generating a token from another kubernetes cluster by running the following command in Minikube VM':
+Variable 
+KUBETOKEN 
+
+Populate this variable by generating a token from another kubernetes cluster by running the following command in Minikube VM': 
+
+```console
 $ kubectl token generate token
 04ff0b.e57e683ec69b2587
-
+```
 CPU
 Default is 1.  Recommend at least 2 if the system has the resources.
 
