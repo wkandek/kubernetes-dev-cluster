@@ -5,12 +5,12 @@
 #####   I. Installation Pre-reqs
 #####  II. Installation Overview 
 ##### III. Vagrantfile Customization
-#####   - Variable Definitions
+#####            Variable Definitions
 #####  IV. Cluster Installation 
-#####   - Step 1
-#####   - Step 2
-#####   - Step 3
-#####   - Step 4
+#####     Step 1
+#####     Step 2
+#####     Step 3
+#####     Step 4
 #####   V. Aliases
 
 ## I. Installation Pre-reqs:
