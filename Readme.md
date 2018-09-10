@@ -129,7 +129,7 @@ From local machine VM's are running on enter the following url or click below:
 
 http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
 
-Now select `TOKEN` and past token copied from terminal 
+Now select `TOKEN` and past token copied from terminal on the provided line.
 
 
 ## V. Aliases
