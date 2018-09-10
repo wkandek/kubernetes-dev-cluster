@@ -2,9 +2,9 @@
 
 Project Goal: 
 
-Create a simple easy to reverse engineer automated Kubernetes cluster installation for those wanting to get familiar with container orchestration and developing/deploying containerized applications.  
+Create a simple automated Kubernetes multi-node VM cluster installation for those wanting to get familiar with container orchestration and developing/deploying containerized applications on a local desktop or laptop system.
 
-With minimum knowledge of basic system administration skills on MacOS, Linux or Windows and this project, it will simplify building a working Kubernetes Development Cluster.  
+With minimum knowledge of basic system administration skills with MacOS, Linux or Windows and this project, it will simplify building a working Kubernetes Development Cluster so the focus can remain on building applications rather than infrastructure.  
 
 ### Table of Contents
 
