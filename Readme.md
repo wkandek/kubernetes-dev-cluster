@@ -1,6 +1,10 @@
 # Kubernetes Development Cluster with Dashboard
 
-*Project Goal: Create a simple easy to reverse engineer automated Kubernetes cluster installation for those wanting to get familiar with container orchestration and developing/deploying containerized applications.  With minimum knowledge of basic system administration skills on MacOS, Linux or Windows and this project, it should be easy to build a working Kubernetes  Development Cluster.  
+Project Goal: 
+
+Create a simple easy to reverse engineer automated Kubernetes cluster installation for those wanting to get familiar with container orchestration and developing/deploying containerized applications.  
+
+With minimum knowledge of basic system administration skills on MacOS, Linux or Windows and this project, it will simplify building a working Kubernetes Development Cluster.  
 
 ### Table of Contents
 
