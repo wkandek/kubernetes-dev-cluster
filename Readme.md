@@ -79,6 +79,7 @@ Variable Name | Default Value             |
 04ff0b.e57e683ec69b2587
 ```
 - Table 2 Variable Definitions
+
 Variable       | Definition                                                                                                  |
 ---------------|-------------------------------------------------------------------------------------------------------------|
 `KUBETOKEN`    | Generate a unique token as described above, copy and paste value replacing default value in Vagrantfile.    |
