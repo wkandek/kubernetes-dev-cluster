@@ -10,7 +10,7 @@ With minimum knowledge of basic system administration skills on MacOS, Linux or 
 
    ####   I. Software Pre-reqs
    ####  II. Cluster Installation Overview
-   - Table 1. List of nodes and IP Addresses"
+   - Table 1. List of nodes and IP Addresses
    #### III. Vagrantfile Customization
    - Table 2. Variable Defaults
    - Table 3. Variable Definitions
