@@ -36,8 +36,7 @@ Kubernetes Dashboard will also be deployed with rbac token authentication.
 
 ## III. Vagrantfile Customization:
 
-The following variables are defined at the top of the Vagrantfile.  Recommend using a command line text editor such as vi or nedit. `KUBEADM` ##### must be a uniquely generated value 
-, instructions are provided in the "Variable Definitions" section below. 
+The following variables are defined at the top of the Vagrantfile.  Recommend using a command line text editor such as vi or nedit. `KUBEADM` must be a uniquely generated value, instructions are provided in the "Variable Definitions" section below. 
 
 Variable Name | Default Value             |
 --------------|---------------------------|
