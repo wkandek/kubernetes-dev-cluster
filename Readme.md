@@ -54,7 +54,11 @@ Kubernetes Dashboard will also be deployed with rbac token authentication. Insta
 
 ## III. Vagrantfile Customization:
 
-The following variables are defined at the top of the Vagrantfile.  Recommend using a command line text editor like vi. Windows users should use Notepad++. IMPORTANT: `KUBETOKEN` must be a uniquely generated value, instructions are provided in the "Variable Definitions" section below. 
+Table 1. Variable Defaults displays the default values for the variables defined in the Vagrantfile. These should be edited as prescribed in Table 2. Variable Definitions. Linux / Mac OS use a command line text editor like vi. For Windows, Notepad++. 
+
+IMPORTANT: `KUBETOKEN` must be a uniquely generated value, instructions are provided in the "Variable Definitions" section below. 
+
+- Table 1 Variable Defaults
 
 Variable Name | Default Value             |
 --------------|---------------------------|
@@ -74,6 +78,7 @@ Variable Name | Default Value             |
 [Minikube]$ kubectl token generate token
 04ff0b.e57e683ec69b2587
 ```
+- Table 2 Variable Definitions
 Variable       | Definition                                                                                                  |
 ---------------|-------------------------------------------------------------------------------------------------------------|
 `KUBETOKEN`    | Generate a unique token as described above, copy and paste value replacing default value in Vagrantfile.    |
