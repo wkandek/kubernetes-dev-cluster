@@ -57,7 +57,7 @@ Kubernetes Dashboard will also be deployed with rbac token authentication. Insta
 
 "Table 2. Variable Defaults" displays the default values for the variables defined in the Vagrantfile. These should be edited as prescribed in "Table 3. Variable Definitions".For Linux, Mac OS, use a command line text editor like vi. For Windows, Notepad++. 
 
-IMPORTANT: `KUBETOKEN` must be a uniquely generated value, instructions are provided in the "Variable Definitions" section below. 
+##### IMPORTANT: `KUBETOKEN` must be a uniquely generated value, instructions are provided in the "Variable Definitions" section below. 
 
 - Table 2. Variable Defaults
 
