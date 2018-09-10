@@ -3,7 +3,8 @@
 ### Table of Contents
 
    ####   I. Software Pre-reqs
-   ####  II. Cluster Installation Overview 
+   ####  II. Cluster Installation Overview
+   - Table 1. List of nodes and IP Addresses"
    #### III. Vagrantfile Customization
    - Variable Definitions
    ####  IV. Cluster Installation 
@@ -28,12 +29,12 @@ On the local machine (Mac OS, Windows, Linux) install the following applications
 
 The Vagrantfile will install and configure a running Kubernetes (latest) Cluster. The cluster will be comprised of a Single Master Node with a user defined number of Worker Nodes. All nodes will run the Linux distribution Ubuntu 18.04 LTS (ubuntu/bionic64) in a Virtualbox Virtual Machine.
 
-There is a private internal network `172.16.35.0/24` created and all nodes are assigned a static address. The nodes can be accessed using the upcoming command example when run from the same directory the `vagrant up` command was executed from during installation. (Replace `NodeName` from "List of nodes and IP Addresses" table):
+There is a private internal network `172.16.35.0/24` created and all nodes are assigned a static address. The nodes can be accessed using the upcoming command example when run from the same directory the `vagrant up` command was executed from during installation. (Replace `NodeName` from "Table 1. List of nodes and IP Addresses" table):
 
 ```
 [LocalMachine]$ vagrant ssh NodeName
 ```
-- List of nodes and IP addresses
+- `Table 1. List of nodes and IP addresses`
 
 NodeName  |  IPAddr       |
 ----------|---------------|
@@ -54,11 +55,11 @@ Kubernetes Dashboard will also be deployed with rbac token authentication. Insta
 
 ## III. Vagrantfile Customization:
 
-Table 1. Variable Defaults displays the default values for the variables defined in the Vagrantfile. These should be edited as prescribed in Table 2. Variable Definitions. Linux / Mac OS use a command line text editor like vi. For Windows, Notepad++. 
+"Table 2. Variable Defaults displays the default values for the variables defined in the Vagrantfile. These should be edited as prescribed in Table 2. Variable Definitions. Linux / Mac OS use a command line text editor like vi. For Windows, Notepad++. 
 
 IMPORTANT: `KUBETOKEN` must be a uniquely generated value, instructions are provided in the "Variable Definitions" section below. 
 
-- Table 1 Variable Defaults
+- Table 2. Variable Defaults
 
 Variable Name | Default Value             |
 --------------|---------------------------|
