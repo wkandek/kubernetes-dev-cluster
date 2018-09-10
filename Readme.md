@@ -34,7 +34,7 @@ There is a private internal network `172.16.35.0/24` created and all nodes are a
 ```
 [LocalMachine]$ vagrant ssh NodeName
 ```
-- `Table 1. List of nodes and IP addresses`
+- Table 1. List of nodes and IP addresses
 
 NodeName  |  IPAddr       |
 ----------|---------------|
@@ -55,7 +55,7 @@ Kubernetes Dashboard will also be deployed with rbac token authentication. Insta
 
 ## III. Vagrantfile Customization:
 
-"Table 2. Variable Defaults displays the default values for the variables defined in the Vagrantfile. These should be edited as prescribed in Table 2. Variable Definitions. Linux / Mac OS use a command line text editor like vi. For Windows, Notepad++. 
+"Table 2. Variable Defaults" displays the default values for the variables defined in the Vagrantfile. These should be edited as prescribed in "Table 3. Variable Definitions".For Linux, Mac OS, use a command line text editor like vi. For Windows, Notepad++. 
 
 IMPORTANT: `KUBETOKEN` must be a uniquely generated value, instructions are provided in the "Variable Definitions" section below. 
 
