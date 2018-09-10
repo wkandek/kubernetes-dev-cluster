@@ -12,7 +12,8 @@ With minimum knowledge of basic system administration skills on MacOS, Linux or 
    ####  II. Cluster Installation Overview
    - Table 1. List of nodes and IP Addresses"
    #### III. Vagrantfile Customization
-   - Variable Definitions
+   - Table 2. Variable Defaults
+   - Table 3. Variable Definitions
    ####  IV. Cluster Installation 
    - Step 1  Download this repository
    - Step 2  Edit Variables, install and configure cluster 
@@ -87,7 +88,7 @@ Variable Name | Default Value             |
 [Minikube]$ kubectl token generate token
 04ff0b.e57e683ec69b2587
 ```
-- Table 2 Variable Definitions
+- Table 3. Variable Definitions
 
 Variable       | Definition                                                                                                  |
 ---------------|-------------------------------------------------------------------------------------------------------------|
