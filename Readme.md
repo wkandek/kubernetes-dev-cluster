@@ -42,7 +42,7 @@ node1     | 172.16.35.101 |
 node2     | 172.16.35.102 |
 node3     | 172.16.35.103 |
 
-If more than three worker nodes were created the pattern would continue `node4` with ip `172.16.35.104` and so forth. Note that the nodes /etc/ssh/sshd_config file has been modified to allow ssh login for ip 172.16.35.10x. This will be shown with the master `IPAddr` in a later example and is possible with any nodes `IPAddr`.
+If more than three worker nodes were created the pattern would continue `node4` with ip `172.16.35.104` and so forth. Note that the nodes /etc/ssh/sshd_config file has been modified to allow ssh login for ip 172.16.35.10x. This will be shown with the master `IPAddr` in a later example and is possible with any node's `IPAddr`.
 
 Cluster provisioning scripts for the master and worker nodes are embedded in the Vagrantfile. These are fairly straight forward bash shell scripts: `$masterscript` and `$workerscript`. Check the echo statements in the code to understand the operations. 
 
