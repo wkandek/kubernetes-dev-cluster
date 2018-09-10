@@ -7,10 +7,10 @@
 #### III. Vagrantfile Customization
 - Variable Definitions
 ####  IV. Cluster Installation 
-- Step 1 Download this repository
-- Step 2 
-- Step 3
-- Step 4
+- Step 1  Download this repository
+- Step 2  Edit Variables, install and configure cluster 
+- Step 3  Login and validate cluster is running
+- Step 4  Access Dashboard
 ####   V. Aliases
 #
 
@@ -20,7 +20,9 @@ On the local machine (MacOS,Windows,Linux) install the following applications in
 ##### 1. [Vagrant](https://www.vagrantup.com/)
 ##### 2. [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 ##### 3. [VirtualBox Extensions](https://download.virtualbox.org/virtualbox/5.2.18/Oracle_VM_VirtualBox_Extension_Pack-5.2.18.vbox-extpack)
-##### 4. [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)
+##### 4. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+##### 5. [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)
+
 
 ## II. Cluster Installation Overview:
 
@@ -69,13 +71,16 @@ Variable       | Definition                                                     
 
 #### Step 1 
 
-Download this repository 
+Open a terminal session on Download this repository 
+
 ```console
 $ git clone https://github.com/ecorbett135/k8s-ubuntu-vagrant
 ```
+
 #### Step 2 
-Ensure all variables have been edited to desired values and `KUBETOKEN` is a uneqly generated token value.
-Install and configure the cluster
+Ensure all variables have been edited to desired values and `KUBETOKEN` is a uniquely generated token value.
+Install and configure the cluster:
+
 ```console
 $ cd k8s-ubuntu-vagrant
 $ vagrant up
@@ -85,9 +90,9 @@ Once installation completes  final line in output will look something like:
    worker3: Run 'kubectl get nodes' on the master to see this node join the cluster.
    ```
 #### Step 3
-
-ssh with port forward, check node status, start proxy and get dashboard token
+Login using ssh with port forward, check node status, start proxy and get dashboard token (copy to paste into web browser)
 (Default vagrant user password is 'vagrant'. Change it using the 'passwd' command after logging in.)
+
 ```
 [LocalMachine]$ ssh -L 8001:127.0.0.1:8001 vagrant@172.16.35.100
 
@@ -107,6 +112,8 @@ eyJhbGciOiJSUzI1NiIsImwpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiw
 From local machine VM's are running on enter the following url or click below:
 
 http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
+
+Now select `TOKEN` and past token copied from terminal 
 
 
 ## V. Aliases
