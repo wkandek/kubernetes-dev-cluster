@@ -1,6 +1,6 @@
 # Vagrant VirtualBox Ubuntu Kubernetes Cluster with Dashboard
 
-## Table of Contents
+### Table of Contents
 
 ####   I. Software Pre-reqs
 ####  II. Cluster Installation Overview 
