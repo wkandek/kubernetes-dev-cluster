@@ -1,4 +1,6 @@
-# Vagrant VirtualBox Ubuntu Kubernetes Cluster with Dashboard
+# Vagrant VirtualBox Ubuntu Kubernetes Development Cluster with Dashboard
+
+*Project Goal: Create a simple easy to reverse engineer automated Kubernetes cluster installation for those wanting to get familiar with container orchestration and developing/deploying containerized applications.  With minimum knowledge of basic system administration skills on MacOS, Linux or Windows and this project, it should be easy to build a working Kubernetes  Development Cluster.  
 
 ### Table of Contents
 
@@ -29,6 +31,8 @@ On the local machine (Mac OS, Windows, Linux) install the following applications
 
 The Vagrantfile will install and configure a running Kubernetes (latest) Cluster. The cluster will be comprised of a Single Master Node with a user defined number of Worker Nodes. All nodes will run the Linux distribution Ubuntu 18.04 LTS (ubuntu/bionic64) in a Virtualbox Virtual Machine.
 
+This next statement should be obvious, just in case it is not: This project is intended as a learning tool and should not be considered a production level deployment of kubernetes.   
+
 There is a private internal network `172.16.35.0/24` created and all nodes are assigned a static address. The nodes can be accessed using the upcoming command example when run from the same directory the `vagrant up` command was executed from during installation. (Replace `NodeName` from "Table 1. List of nodes and IP Addresses" table):
 
 ```
@@ -55,7 +59,7 @@ Kubernetes Dashboard will also be deployed with rbac token authentication. Insta
 
 ## III. Vagrantfile Customization:
 
-"Table 2. Variable Defaults" displays the default values for the variables defined in the Vagrantfile. These should be edited as prescribed in "Table 3. Variable Definitions". For Linux, Mac OS, use a command line text editor like vi. For Windows, Notepad++. 
+"Table 2. Variable Defaults" displays the default values for the variables defined in the Vagrantfile. These should be edited as prescribed in "Table 3. Variable Definitions". For Linux, Mac OS, use a command line text editor like vi. For Windows, try Notepad++. 
 
 ##### IMPORTANT: `KUBETOKEN` must be a uniquely generated value, instructions are provided in the "Variable Definitions" section below. 
 
@@ -91,6 +95,8 @@ Variable       | Definition                                                     
 `CPU`          | Default is `1`. Recommend at least `2` if the system has the resources.                                     |
 `MEMORY`       | Default is `1024`. Recomend a minimum of `1024`. More per VM is better if the system has the resources.     |
 ## IV. Cluster Installation:
+
+Please note that this process has not yet been tested on Windows OS platforms but *should* work.
 
 #### Step 1 
 
