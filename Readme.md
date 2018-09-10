@@ -24,11 +24,11 @@ On the local machine (MacOS,Windows,Linux) install the following applications in
 
 ## II. Cluster Installation Overview:
 
-The Vagrantfile will install and configure a running Kubernetes (latest) cluster on Ubuntu 18.04 LTS (bionic64)
+The Vagrantfile will install and configure a running a single Master node Kubernetes (latest) cluster on Ubuntu 18.04 LTS (ubuntu/bionic64)
 
-Ubuntu provisioning scripts embedded in Vagrant file. This is a fairly straight forward bash shell script. Check the echo statements in the code to understand the operations. 
+Ubuntu provisioning scripts are embedded in the Vagrantfile. This is a fairly straight forward bash shell script. Check the echo statements in the code to understand the operations. 
 
-User should edit variables and is required to provide a unique token value for `KUBETOKEN`. Do not skip the Minikube pre-requisite as that is required for generationg the token. 
+User should edit variables as needed. Note there is a requirement to provide a unique token value for `KUBETOKEN`. Do not skip the Minikube pre-requisite as that is required for generationg the token. 
 
 Currently Flannel is the only network overlay the provisioning script provides. 
 
@@ -36,14 +36,14 @@ Kubernetes Dashboard will also be deployed with rbac token authentication.
 
 ## III. Vagrantfile Customization:
 
-The following variables are defined at the top of the Vagrantfile.  Recommend using a command line text editor such as vi or nedit. `KUBEADM` [must be a uniquely generated value], instructions are provided in the "Variable Definitions" section below. 
+The following variables are defined at the top of the Vagrantfile.  Recommend using a command line text editor such as vi or nedit. `KUBEADM` "must be a uniquely generated value", instructions are provided in the "Variable Definitions" section below. 
 
 Variable Name | Default Value             |
 --------------|---------------------------|
 `KUBETOKEN`   | "03fe0c.e57e7831b69b2687" |
 `MASTER_IP`   |     "172.16.35.100"       |
 `POD_NTW_CIDR`|     "10.244.0.0/16"       |
-`BOX_IMAGE`   |    "ubuntu/xenial64"      |
+`BOX_IMAGE`   |    "ubuntu/bionic64"      |
 `NODE_COUNT`  |           3               |
 `CPU`         |           1               |
 `MEMORY`      |          1024             |
@@ -59,12 +59,12 @@ $ kubectl token generate token
 Variable       | Definition                                                                                                  |
 ---------------|-------------------------------------------------------------------------------------------------------------|
 `KUBETOKEN`    | Generate a unique token as described above.                                                                 |
-`MASTER_IP`    | Default is "172.16.35.100". The cluster master and apiserver IP. Do not overlap `POD_NTW_CIDR`              |
-`POD_NTW_CIDR` | Default is "10.244.0.0/16". This value is [required] for Flannel to run.                                    |
-`BOX_IMAGE`    | Default is "ubuntu/xenial64". Changing OS value is not recommended as scripts may break.                    |
-`NODE_COUNT`   | Default is 2. Set the desired number of worker nodes (Note: There is no variable for master node).          |
-`CPU`          | Default is 1.  Recommend at least 2 if the system has the resources.                                        |
-`MEMORY`       | Default is 1024. Recomend a minimum of 1024 is the system has the resources.                                |
+`MASTER_IP`    | Default is "172.16.35.100"  The cluster master and apiserver IP. Do not overlap `POD_NTW_CIDR`              |
+`POD_NTW_CIDR` | Default is "10.244.0.0/16"  This value is [required] for Flannel to run.                                    |
+`BOX_IMAGE`    | Default is "ubuntu/bionic64" Changing OS value may require script changes.                                  |
+`NODE_COUNT`   | Default is 2 Set desired number of worker nodes           |
+`CPU`          | Default is 1 Recommend at least 2 if the system has the resources.                                        |
+`MEMORY`       | Default is 1024 Recomend a minimum of 1024 is the system has the resources.                                |
 ## IV. Cluster Installation:
 
 #### Step 1 
