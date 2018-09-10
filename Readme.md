@@ -7,8 +7,8 @@
 #### III. Vagrantfile Customization
 - Variable Definitions
 ####  IV. Cluster Installation 
-- Step 1
-- Step 2
+- Step 1 Download this repository
+- Step 2 
 - Step 3
 - Step 4
 ####   V. Aliases
@@ -74,7 +74,7 @@ Download this repository
 $ git clone https://github.com/ecorbett135/k8s-ubuntu-vagrant
 ```
 #### Step 2 
-
+Ensure all variables have been edited to desired values and `KUBETOKEN` is a uneqly generated token value.
 Install and configure the cluster
 ```console
 $ cd k8s-ubuntu-vagrant
