@@ -35,7 +35,7 @@ There is a private internal network created 172.16.35.0/24. The nodes can be acc
 ```
 - List of nodes and IP addresses
 
-<NodeName>| <IPAddr>      |
+NodeName  |  IPAddr       |
 ----------|---------------|
 master    | 172.16.35.100 |
 node1     | 172.16.35.101 |
