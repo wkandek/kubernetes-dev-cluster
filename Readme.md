@@ -2,17 +2,17 @@
 
 ### Table of Contents
 
-####   I. Software Pre-reqs
-####  II. Cluster Installation Overview 
-#### III. Vagrantfile Customization
-- Variable Definitions
-####  IV. Cluster Installation 
-- Step 1  Download this repository
-- Step 2  Edit Variables, install and configure cluster 
-- Step 3  Login and validate cluster is running
-- Step 4  Access Dashboard
-####   V. Aliases
-#
+   ####   I. Software Pre-reqs
+   ####  II. Cluster Installation Overview 
+   #### III. Vagrantfile Customization
+   - Variable Definitions
+   ####  IV. Cluster Installation 
+   - Step 1  Download this repository
+   - Step 2  Edit Variables, install and configure cluster 
+   - Step 3  Login and validate cluster is running
+   - Step 4  Access Dashboard
+   ####   V. Aliases
+   #
 
 ## I. Software Pre-reqs:
 On the local machine (MacOS,Windows,Linux) install the following applications in the order listed below:
