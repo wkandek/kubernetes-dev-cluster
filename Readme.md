@@ -24,9 +24,9 @@ On the local machine (MacOS,Windows,Linux) install the following applications in
 
 ## II. Cluster Installation Overview:
 
-The Vagrantfile will install and configure a running a Single Master Node Kubernetes (latest) Cluster with a user defined number of Worker Nodes all running Ubuntu 18.04 LTS (ubuntu/bionic64) in a Virtualbox Virtual Machine.
+The Vagrantfile will install and configure a running Kubernetes (latest) Cluster. The cluster will be comprised of a Single Master Node with a user defined number of Worker Nodes. All nodes will run the Linux distribution Ubuntu 18.04 LTS (ubuntu/bionic64) in a Virtualbox Virtual Machine.
 
-Ubuntu provisioning scripts are embedded in the Vagrantfile. This is a fairly straight forward bash shell script. Check the echo statements in the code to understand the operations. 
+Cluster provisioning scripts for the master and worker nodes are embedded in the Vagrantfile. These are fairly straight forward bash shell scripts: `$masterscript` and `$workerscript`. Check the echo statements in the code to understand the operations. 
 
 User should edit variables as needed. Note there is a requirement to provide a unique token value for `KUBETOKEN`. Do not skip the Minikube pre-requisite as that is required for generating the token. 
 
