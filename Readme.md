@@ -28,7 +28,7 @@ On the local machine (MacOS,Windows,Linux) install the following applications in
 
 The Vagrantfile will install and configure a running Kubernetes (latest) Cluster. The cluster will be comprised of a Single Master Node with a user defined number of Worker Nodes. All nodes will run the Linux distribution Ubuntu 18.04 LTS (ubuntu/bionic64) in a Virtualbox Virtual Machine.
 
-There is a private internal network created 172.16.35.0/24. The nodes can be accessed using the following command (Replace `<NodeName>` from "List of nodes and IP Addresses" table):
+There is a private internal network created 172.16.35.0/24. The nodes can be accessed using the upcoming command example when run from the same directory the `vagrant up` command was executed from during installation. (Replace `<NodeName>` from "List of nodes and IP Addresses" table):
 
 ```
 [LocalMachine]$ vagrant ssh <NodeName>
@@ -54,7 +54,7 @@ Kubernetes Dashboard will also be deployed with rbac token authentication. Insta
 
 ## III. Vagrantfile Customization:
 
-The following variables are defined at the top of the Vagrantfile.  Recommend using a command line text editor such as vi or nedit. `KUBEADM` must be a uniquely generated value, instructions are provided in the "Variable Definitions" section below. 
+The following variables are defined at the top of the Vagrantfile.  Recommend using a command line text editor like vi. Windows users should use Notepad++. IMPORTANT: `KUBETOKEN` must be a uniquely generated value, instructions are provided in the "Variable Definitions" section below. 
 
 Variable Name | Default Value             |
 --------------|---------------------------|
