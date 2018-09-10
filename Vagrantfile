@@ -62,7 +62,7 @@ sleep 45
 echo "Cleaning up Flannel daemonsets..."
 kubectl -n kube-system delete ds kube-flannel-ds-arm
 kubectl -n kube-system delete ds kube-flannel-ds-arm64
-kubectl -n kube-system ds kube-flannel-ds-ppc64le
+kubectl -n kube-system delete ds kube-flannel-ds-ppc64le
 kubectl -n kube-system delete ds kube-flannel-ds-s390x
 
 echo "Installing Kubernetes Dashboard"
