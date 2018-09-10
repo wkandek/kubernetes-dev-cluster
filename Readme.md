@@ -15,7 +15,7 @@
    #
 
 ## I. Software Pre-reqs:
-On the local machine (MacOS,Windows,Linux) install the following applications in the order listed below:
+On the local machine (Mac OS, Windows, Linux) install the following applications in the order listed below:
 
 ##### 1. [Vagrant](https://www.vagrantup.com/)
 ##### 2. [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
