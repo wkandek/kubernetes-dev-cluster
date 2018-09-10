@@ -30,7 +30,7 @@ The Vagrantfile will install and configure a running Kubernetes (latest) Cluster
 
 There is a private internal network created 172.16.35.0/24. The nodes can be accessed using the following command (Replace `<NodeName>` from "List of nodes and IP Addresses" table):
 
-```console
+```
 [LocalMachine]$ vagrant ssh <NodeName>
 ```
 - List of nodes and IP addresses
