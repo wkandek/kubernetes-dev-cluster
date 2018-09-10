@@ -89,7 +89,7 @@ Variable       | Definition                                                     
 
 Open a terminal session on Download this repository 
 
-```console
+```
 $ git clone https://github.com/ecorbett135/k8s-ubuntu-vagrant
 ```
 
@@ -97,7 +97,7 @@ $ git clone https://github.com/ecorbett135/k8s-ubuntu-vagrant
 Ensure all variables have been edited to desired values and `KUBETOKEN` is a uniquely generated token value.
 Install and configure the cluster:
 
-```console
+```
 $ cd k8s-ubuntu-vagrant
 $ vagrant up
 ```
