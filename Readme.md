@@ -48,7 +48,7 @@ Variable Name | Default Value             |
 `CPU`         |           1               |
 `MEMORY`      |          1024             |
 
-- Variable Definitions
+--- Variable Definitions
 
 `KUBETOKEN` Generate a unique token from the Minikube VM using the following command: 
 
