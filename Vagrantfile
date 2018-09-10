@@ -19,8 +19,9 @@ MEMORY = 1024
 
 $masterscript = <<-SCRIPT
 
-echo "Configuring swap space off!"
+echo "Turning off swap!"
 swapoff -a
+echo "Turning off swap at boot time!"
 sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
 echo "Setting up ssh to allow password authetication"
@@ -42,7 +43,7 @@ systemctl enable docker && systemctl restart docker
 echo "Getting kube images..."
 kubeadm config images pull
 
-echo "Initializing k8s Cluster"
+echo "Initializing k8s Cluster..."
 kubeadm init --pod-network-cidr=#{POD_NTW_CIDR} --apiserver-advertise-address=#{MASTER_IP} --token #{KUBETOKEN} --token-ttl 0
 
 echo "Setting environment variables"
@@ -104,8 +105,9 @@ SCRIPT
 
 $workerscript = <<-SCRIPT
 
-echo "Configuring swap space off!"
+echo "Turning off swap!"
 swapoff -a
+"Configuring swapp off at boot time!"
 sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
 echo "Setting up ssh to allow password authetication"
@@ -121,6 +123,7 @@ EOF
 
 echo "Installing: ansible docker.io kubelet kubeadm kubectl"
 apt update && apt install -y ansible docker.io kubelet kubeadm kubectl
+echo "Enabling and Restarting services!"
 systemctl enable kubelet && systemctl restart kubelet
 systemctl enable docker && systemctl restart docker
 
