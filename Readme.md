@@ -50,7 +50,7 @@ User should edit variables as needed. Note there is a requirement to provide a u
 
 Currently Flannel is the only network overlay the provisioning script provides. 
 
-Kubernetes Dashboard will also be deployed with rbac token authentication. Installation instrunctions provide commands for accessing the dashboard from the local system the cluster is installed on.
+Kubernetes Dashboard will also be deployed with rbac token authentication. Installation instructions provide commands for accessing the dashboard from the local system the cluster is installed on.
 
 ## III. Vagrantfile Customization:
 
