@@ -116,7 +116,7 @@ Once installation completes  final line in output will look something like:
 Login using ssh with port forward, check node status, start proxy and get dashboard token (copy to paste into web browser)
 (Default vagrant user password is 'vagrant'. Change it using the 'passwd' command after logging in.)
 
-```console
+```
 [LocalMachine]$ ssh -L 8001:127.0.0.1:8001 vagrant@172.16.35.100
 
 [master]$ kubectl -n kube-system get nodes
