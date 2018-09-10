@@ -77,12 +77,12 @@ $ kubectl token generate token
 Variable       | Definition                                                                                                  |
 ---------------|-------------------------------------------------------------------------------------------------------------|
 `KUBETOKEN`    | Generate a unique token as described above.                                                                 |
-`MASTER_IP`    | Default is "172.16.35.100"  The cluster master and apiserver IP. Do not overlap `POD_NTW_CIDR`              |
-`POD_NTW_CIDR` | Default is "10.244.0.0/16"  This value is [required] for Flannel to run.                                    |
-`BOX_IMAGE`    | Default is "ubuntu/bionic64" Changing OS value may require script changes.                                  |
-`NODE_COUNT`   | Default is 2 Set desired number of worker nodes           |
-`CPU`          | Default is 1 Recommend at least 2 if the system has the resources.                                        |
-`MEMORY`       | Default is 1024 Recomend a minimum of 1024 is the system has the resources.                                |
+`MASTER_IP`    | Default is `"172.16.35.100"`. The cluster master and apiserver IP. Do not overlap `POD_NTW_CIDR`            |
+`POD_NTW_CIDR` | Default is `"10.244.0.0/16"`. This value is [required] for Flannel to run.                                  |
+`BOX_IMAGE`    | Default is `"ubuntu/bionic64"`. Changing OS value may require script changes.                               |
+`NODE_COUNT`   | Default is `2` Set desired number of worker nodes                                                           |
+`CPU`          | Default is `1`. Recommend at least `2` if the system has the resources.                                     |
+`MEMORY`       | Default is `1024`. Recomend a minimum of `1024`. More per VM is better if the system has the resources.     |
 ## IV. Cluster Installation:
 
 #### Step 1 
