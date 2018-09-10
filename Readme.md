@@ -76,7 +76,7 @@ $ kubectl token generate token
 ```
 Variable       | Definition                                                                                                  |
 ---------------|-------------------------------------------------------------------------------------------------------------|
-`KUBETOKEN`    | Generate a unique token as described above.                                                                 |
+`KUBETOKEN`    | Generate a unique token as described above, copy and paste value replacing default value in Vagrantfile.    |
 `MASTER_IP`    | Default is `"172.16.35.100"`. Cluster Master and Apiserver IPAddr. Do not overlap `POD_NTW_CIDR`            |
 `POD_NTW_CIDR` | Default is `"10.244.0.0/16"`. This value is [required] for Flannel to run.                                  |
 `BOX_IMAGE`    | Default is `"ubuntu/bionic64"`. Changing OS value may require script changes.                               |
