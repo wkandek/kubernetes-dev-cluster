@@ -4,7 +4,7 @@ Project Goal:
 
 Create a simple automated Kubernetes multi-node VM cluster installation for those wanting to get familiar with container orchestration and developing/deploying containerized applications from a local desktop or laptop system.
 
-With minimum knowledge of basic system administration skills with MacOS, Linux or Windows and this project, it will simplify building a working Kubernetes Development Cluster so the focus can remain on building applications rather than infrastructure.  
+This project can be run on MacOS, Linux or Windows. Basic system administration skills with Linux are required for this project. Users will likely need local adminstrative privileges to install the required software packages on the local machine where the VM Cluster is to be deployed. 
 
 ### Table of Contents
 
