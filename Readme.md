@@ -20,7 +20,9 @@ This project can be run on MacOS, Linux or Windows. Basic system administration 
    - Step 3  Login and validate cluster is running
    - Step 4  Access Dashboard
    ####   V. Aliases
-   #
+   ####  VI. What's next
+   - Setup a LoadBalancer 
+      - Test the LoadBalancer
 
 ## I. Software Pre-reqs:
 On the local machine (Mac OS, Windows, Linux) install the following applications in the order listed below:
