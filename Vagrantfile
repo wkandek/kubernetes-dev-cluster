@@ -9,9 +9,9 @@ KUBETOKEN = "03fe0c.e57e7831b69b2687"
 MASTER_IP = "172.16.35.100"
 POD_NTW_CIDR = "10.244.0.0/16"
 BOX_IMAGE = "ubuntu/bionic64"
-NODE_COUNT = 2
-CPU = 1
-MEMORY = 1024
+NODE_COUNT = 3
+CPU = 2
+MEMORY = 2048
 
 ######################################################################################
 # Master Node Configuration Script
@@ -58,7 +58,7 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
 
 echo "Installing Flannel network overlay"
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-sleep 45
+sleep 30
 echo "Cleaning up Flannel daemonsets..."
 kubectl -n kube-system delete ds kube-flannel-ds-arm
 kubectl -n kube-system delete ds kube-flannel-ds-arm64
@@ -67,36 +67,13 @@ kubectl -n kube-system delete ds kube-flannel-ds-s390x
 
 echo "Installing Kubernetes Dashboard"
 kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
-sleep 45
+kubectl apply -f https://raw.githubusercontent.com/ecorbett135/k8s-ubuntu-vagrant/master/addon/dashboard/dashboard-cluster-role-binding.yaml
+kubectl apply -f https://raw.githubusercontent.com/ecorbett135/k8s-ubuntu-vagrant/master/addon/dashboard/dashboard-service-account.yaml
 
-echo "Creating Dashboard ClusterRoleBinding..."
-cat << EOF > /home/vagrant/admin-user-crb.yaml
-apiVersion: rbac.authorization.k8s.io/v1beta1
-kind: ClusterRoleBinding
-metadata:
-  name: admin-user
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: ServiceAccount
-  name: admin-user
-  namespace: kube-system
-EOF
-
-kubectl create -f /home/vagrant/admin-user-crb.yaml
-
-echo "Creating Dashboard ServiceAccount..."
-cat << EOF > /home/vagrant/admin-user-sa.yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: admin-user
-  namespace: kube-system
-EOF
-
-kubectl create -f /home/vagrant/admin-user-sa.yaml
+echo "Installing addon: Metallb (Loadbalancer)"
+kubectl apply -f https://raw.githubusercontent.com/ecorbett135/k8s-ubuntu-vagrant/master/addon/metallb/metallb-install.yaml
+kubectl apply -f https://raw.githubusercontent.com/ecorbett135/k8s-ubuntu-vagrant/master/addon/metallb/layer2.config-yaml
+kubectl apply -f https://raw.githubusercontent.com/ecorbett135/k8s-ubuntu-vagrant/master/addon/metallb/nginx-loadbalancer-test-deployment.yaml
 SCRIPT
 
 ######################################################################################
