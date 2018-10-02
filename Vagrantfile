@@ -6,8 +6,7 @@
 ######################################################################################
 
 KUBETOKEN = "Replace text between quotes with minikube token"
-START_IP_RANGE= "172.16.35.100"
-MASTER_IP = "#{START_IP_RANGE}"
+MASTER_IP = "172.16.35.100"
 POD_NET_CIDR = "10.244.0.0/16"
 BOX_IMAGE = "ubuntu/bionic64"
 WORKER_NODE_COUNT = 2
@@ -132,7 +131,7 @@ Vagrant.configure("2") do |config|
 	config.vm.define "node#{i}" do |worker|
 		worker.vm.box = BOX_IMAGE
 		worker.vm.hostname = "node#{i}"
-		worker.vm.network :private_network, ip: "#{START_IP_RANGE}+#{i}"
+		worker.vm.network :private_network, ip: "172.16.35#{100+i}"
 		worker.vm.provider :virtualbox do |v|
 			v.name = "node#{i}"
 			v.memory = MEMORY
