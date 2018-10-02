@@ -5,13 +5,14 @@
 # Variables Section. See https://github.com/ecorbett135/k8s-ubuntu-vagrant for details
 ######################################################################################
 
-KUBETOKEN = "03fe0c.e57e7831b69b2687"
-MASTER_IP = "172.16.35.100"
-POD_NTW_CIDR = "10.244.0.0/16"
+KUBETOKEN = "Replace text between quotes with minikube token"
+START_IP_RANGE= "172.16.35.100"
+MASTER_IP = "#{START_IP_RANGE}"
+POD_NET_CIDR = "10.244.0.0/16"
 BOX_IMAGE = "ubuntu/bionic64"
-NODE_COUNT = 3
-CPU = 2
-MEMORY = 2048
+WORKER_NODE_COUNT = 2
+CPU = 1
+MEMORY = 1024
 
 ######################################################################################
 # Master Node Configuration Script
@@ -24,7 +25,7 @@ swapoff -a
 echo "Turning off swap at boot time!"
 sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
-echo "Setting up ssh to allow password authetication"
+echo "Setting up ssh to allow password authetication from local machine"
 mv /etc/ssh/sshd_config /etc/ssh/sshd_config.orig
 sed -e 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config.orig > /etc/ssh/sshd_config
 systemctl reload sshd
@@ -118,7 +119,7 @@ Vagrant.configure("2") do |config|
 	config.vm.define "master" do |master|
 		master.vm.box = BOX_IMAGE
 		master.vm.hostname = 'master'
-		master.vm.network :private_network, ip: "172.16.35.100"
+		master.vm.network :private_network, ip: "#{MASTER_IP}"
 		master.vm.provider :virtualbox do |v|
 			v.name = "master"
 			v.memory = MEMORY
@@ -131,7 +132,7 @@ Vagrant.configure("2") do |config|
 	config.vm.define "node#{i}" do |worker|
 		worker.vm.box = BOX_IMAGE
 		worker.vm.hostname = "node#{i}"
-		worker.vm.network :private_network, ip: "172.16.35.10#{i}"
+		worker.vm.network :private_network, ip: "#{START_IP_RANGE}+#{i}"
 		worker.vm.provider :virtualbox do |v|
 			v.name = "node#{i}"
 			v.memory = MEMORY
