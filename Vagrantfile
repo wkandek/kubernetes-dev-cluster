@@ -2,11 +2,13 @@
 # vi: set ft=ruby :
 
 ######################################################################################
-# Variables Section. See https://github.com/ecorbett135/k8s-ubuntu-vagrant for details
+# User Variables Section. See https://github.com/ecorbett135/k8s-ubuntu-vagrant for details
 ######################################################################################
 
-KUBETOKEN = "Replace text between quotes with minikube token"
-MASTER_IP = "172.16.35.100"
+KUBETOKEN = "03fe0c.e57e7831b69b2687"
+VM_SUBNET = "172.16.35."
+NODE_OCTET = 100
+MASTER_IP = "#{VM_SUBNET}#{NODE_OCTET}"
 POD_NET_CIDR = "10.244.0.0/16"
 BOX_IMAGE = "ubuntu/bionic64"
 WORKER_NODE_COUNT = 2
@@ -92,7 +94,8 @@ mv /etc/ssh/sshd_config /etc/ssh/sshd_config.orig
 sed -e 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config.orig > /etc/ssh/sshd_config
 systemctl reload sshd
 
-echo "Setting up kubenetes repository!"
+echo "Setting up kubenetes repository!":0
+
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
 deb http://apt.kubernetes.io/ kubernetes-xenial main
@@ -125,13 +128,13 @@ Vagrant.configure("2") do |config|
 			v.cpus = CPU
 	end
 		master.vm.provision "shell", inline: $masterscript
-	end
+end
 
 (1..WORKER_NODE_COUNT).each do |i|
 	config.vm.define "node#{i}" do |worker|
 		worker.vm.box = BOX_IMAGE
 		worker.vm.hostname = "node#{i}"
-		worker.vm.network :private_network, ip: "172.16.35#{100+i}"
+		worker.vm.network :private_network, ip: "#{VM_SUBNET}#{NODE_OCTET+i}"
 		worker.vm.provider :virtualbox do |v|
 			v.name = "node#{i}"
 			v.memory = MEMORY
