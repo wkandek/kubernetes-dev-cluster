@@ -45,7 +45,7 @@ echo "Getting kube images..."
 kubeadm config images pull
 
 echo "Initializing k8s Cluster..."
-kubeadm init --pod-network-cidr=#{POD_NTW_CIDR} --apiserver-advertise-address=#{MASTER_IP} --token #{KUBETOKEN} --token-ttl 0
+kubeadm init --pod-network-cidr=#{POD_NET_CIDR} --apiserver-advertise-address=#{MASTER_IP} --token #{KUBETOKEN} --token-ttl 0
 
 echo "Setting environment variables"
 mkdir -p /home/vagrant/.kube
@@ -128,7 +128,7 @@ Vagrant.configure("2") do |config|
 		master.vm.provision "shell", inline: $masterscript
 	end
 
-(1..NODE_COUNT).each do |i|
+(1..WORKER_NODE_COUNT).each do |i|
 	config.vm.define "node#{i}" do |worker|
 		worker.vm.box = BOX_IMAGE
 		worker.vm.hostname = "node#{i}"
