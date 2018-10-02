@@ -5,7 +5,7 @@
 # User Variables Section. See https://github.com/ecorbett135/k8s-ubuntu-vagrant for details
 ######################################################################################
 
-KUBETOKEN = "03fe0c.e57e7831b69b2687"
+KUBETOKEN = "Replace text between quotes with minikube token"
 VM_SUBNET = "172.16.35."
 NODE_OCTET = 100
 MASTER_IP = "#{VM_SUBNET}#{NODE_OCTET}"
