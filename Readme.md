@@ -20,7 +20,7 @@ This project can be run on MacOS, Linux or Windows. Basic system administration 
    - Step 3  Login and validate cluster is running
    - Step 4  Access Dashboard
    ####   V. Aliases
-   ####  VI. What's next
+   ####  VI. Addons
    - Setup a LoadBalancer 
       - Test the LoadBalancer
 
@@ -167,3 +167,13 @@ alias kcw='kubectl -o wide'
 alias ks='kubectl -n kube-system'
 alias ksw='kubectl -n kube-system -o wide'
 ```
+## VI. Addons
+
+The $masterscript provisiong script will install a simple Layer2 LoadBalancer configuration using Metallb. An NGINX web server will be deployed and can be accessed by the first IP in the range defined in the addon/metallb/layer2.config-yaml. By default the the url will be http://172.16.35.240 and is accesable from a web browser on the local machine the VM's are installed on.
+
+
+
+
+
+
+ 
