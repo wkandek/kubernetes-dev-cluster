@@ -142,7 +142,6 @@ Vagrant.configure("2") do |config|
     master.vm.box = BOX_IMAGE
     master.vm.hostname = 'master'
     master.vm.network :private_network, ip: "#{MASTER_IP}"
-    master.vm.network :forwarded_port, guest: 8001, guest_ip: "127.0.0.1", host: 8001 , host_ip: "127.0.0.1"
     master.vm.provider :virtualbox do |v|
       v.name = "master"
       v.memory = MEMORY
