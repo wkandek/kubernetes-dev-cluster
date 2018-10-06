@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body bgcolor="lightblue">
+
+<h2> NGINX is up and running</h2>
+
+<button type="button"
+onclick="document.getElementById('time').innerHTML = Date()">
+Click to display current Date and Time</button>
+
+<p id="time"></p>
+
+<p> To view cluster resources and health access the
+<a href="http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/"> Kubernetes Dashboard </a> </p>
+
+<p> Run the following command on the master node to get the login token for admin-user: </p>
+
+<code> kubectl -n kube-system describe secret $(ks get secret | awk '/^admin-user/{print $1}') | awk '$1=="token:"{print $2} </code>
+
+</body>
+</html>
