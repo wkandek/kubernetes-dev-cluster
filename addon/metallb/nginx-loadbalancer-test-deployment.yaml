@@ -20,12 +20,13 @@ spec:
         ports:
         - containerPort: 80
         volumeMounts:
-        - mountPath: "/usr/share/nginx/html/index.html"
-          name: webconf
+        - mountPath: /usr/share/nginx/html
+          name: content1
       volumes:
-      - name: webconf
+      - name: content1
         hostPath:
-                path: "/vagrant/addon/metallb/index.html"
+          path: /vagrant/addon/metallb
+          type: Directory
 ---
 apiVersion: v1
 kind: Service
