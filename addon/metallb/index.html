@@ -1,71 +1,77 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Nginx on K8s</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <title>Nginx on K8s</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
 
-<style>
-* {
-    box-sizing: border-box;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-}
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-/* Style the header */
-header {
-    background-color: blue;
-    padding: 10px;
-    text-align: center;
-    font-size: 20px;
-    color: black;
-}
-</style>
+        header {
+            background-color: blue;
+            padding: 10px;
+            text-align: center;
+            font-size: 20px;
+            color: black;
+        }
 
-<script>
+        div.a {
+		text-indent: 25px;
+	}
+        </style>
 
-function startTime() {
-  var today = new Date();
-  var h = today.getHours();
-  var m = today.getMinutes();
-  var s = today.getSeconds();
-      m = checkTime(m);
-      s = checkTime(s);
-      document.getElementById('txt').innerHTML =
-      today ;
-  var t = setTimeout(startTime, 500);
-}
+        <script>
+            function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+                m = checkTime(m);
+                s = checkTime(s);
+               document.getElementById('dtdata').innerHTML =
+               today ;
+            var t = setTimeout(startTime, 500);
+            }
 
-function checkTime(i) {
-  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-  return i;
-}
-</script>
+            function checkTime(i) {
+                if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+                return i;
+            }
+        </script>
+    </head>
+    <body onload="startTime()" bgcolor="lightblue">
+        <header>
+            <h1 style="text-align:center;font-size:200%;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/NginxLogo.gif" width="200">
+            Running on
+                <sub>
+		    <img src="https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png" width="75">
+	        </sub>
+            </h1>
+	    <p style="color:white";
+	        div id="dtdata">
+	        </div>
+            </p>
+         </header>
 
-</head>
-<body onload="startTime()" bgcolor="lightblue">
-<header>
-  <h1 style="text-align:center;font-size:200%;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/NginxLogo.gif" width="200">
-    Running on
-    <sub><img src="https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png" width="75"></sub>
-  </h1>
-  <p style="color:red";div id="txt"></div>
-  <p>
+         <article style="text-align:left;">
+             <h2> To view cluster resources: </h2>
+             <p> <strong> <ol>
+                 <li>SSH to the master node and copy and paste the kubectl command below into the terminal session (substitute IP if not using defaults):</li></strong></p>
+                     <div class="a">
+			     <code><p> ssh -L 8001:127.0.0.1:8001 vagrant@172.16.35.100 </p>
+                             <p> kubectl -n kube-system describe secret $(ks get secret | awk '/^admin-user/{print $1}') | awk '$1=="token:"{print $2}' </code>
+                     </div>
+                             <p><strong><li> Browse to the following URL and paste the token to login:  </li></ol></p>
+                             <p style="text-indent: 60px" ><a href="http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/"> Kubernetes Dashboard </a>
+          <article>
 
-</header>
-
-<article style="text-align:left;">
-  <h2> To view cluster resources: </h2>
-
-  <p><strong><ol><li>SSH to the master node and copy and paste the kubectl command below into the terminal session (substitute IP if not using defaults):</li></strong></p>
-    <code><p style="text-indent: 25px"> ssh -L 8001:127.0.0.1:8001 vagrant@172.16.35.100 </p>
-          <p style="text-indent: 25px"> kubectl -n kube-system describe secret $(ks get secret | awk '/^admin-user/{print $1}') | awk '$1=="token:"{print $2}' </code>
-  <p><strong><li> Browse to the following URL and paste the token to login:  </li></ol></p>
-  <p style="text-indent: 50px" ><a href="http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/"> Kubernetes Dashboard </a>
-<article>
-
-</body>
+    </body>
 </html>
