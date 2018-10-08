@@ -174,6 +174,6 @@ The $masterscript provisiong script will install a simple Layer2 LoadBalancer co
 
 
 
-<img src="https://github.com/ecorbett135/kubernetes-dev-cluster/blob/master/nginx-page.png" width="400">
+<img src="https://github.com/ecorbett135/kubernetes-dev-cluster/blob/master/nginx-k8s-deployment.png" width="400">
 
  
