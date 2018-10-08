@@ -142,6 +142,7 @@ Vagrant.configure("2") do |config|
     master.vm.box = BOX_IMAGE
     master.vm.hostname = 'master'
     master.vm.network :private_network, ip: "#{MASTER_IP}"
+    master.vm.synced_folder "./" , "/vagrant"
     master.vm.provider :virtualbox do |v|
       v.name = "master"
       v.memory = MEMORY
@@ -155,6 +156,7 @@ end
     worker.vm.box = BOX_IMAGE
     worker.vm.hostname = "node#{i}"
     worker.vm.network :private_network, ip: "#{VM_SUBNET}#{NODE_OCTET+i}"
+    worker.vm.synced_folder "./" , "/vagrant"
     worker.vm.provider :virtualbox do |v|
       v.name = "node#{i}"
       v.memory = MEMORY
