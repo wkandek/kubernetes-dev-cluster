@@ -80,7 +80,7 @@ kubectl -n kube-system delete ds kube-flannel-ds-s390x
 sleep 30
 
 echo "Installing Kubernetes Dashboard..."
-kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta8/aio/deploy/recommended.yaml
 kubectl apply -f https://raw.githubusercontent.com/wkandek/kubernetes-dev-cluster/master/addon/dashboard/dashboard-cluster-role-binding.yaml
 kubectl apply -f https://raw.githubusercontent.com/wkandek/kubernetes-dev-cluster/master/addon/dashboard/dashboard-service-account.yaml
 
