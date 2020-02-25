@@ -87,7 +87,7 @@ Variable Name | Default Value             |
 `KUBETOKEN` Generate a unique token from the Minikube VM using the following command: 
 
 ```console
-[Minikube]$ kubectl token generate token
+[Minikube]$ kubeadm token generate
 04ff0b.e57e683ec69b2587
 ```
 - Table 3. Variable Definitions
