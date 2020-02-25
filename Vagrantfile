@@ -5,7 +5,7 @@
 # User Variables Section. See https://github.com/ecorbett135/k8s-ubuntu-vagrant for details
 ######################################################################################
 
-KUBETOKEN = "03fe0c.e57e7831b69b2687"
+KUBETOKEN = "13fe0c.e57e7831b69b2687"
 VM_SUBNET = "172.16.35."
 NODE_OCTET = 100
 MASTER_IP = "#{VM_SUBNET}#{NODE_OCTET}"
@@ -43,7 +43,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 
 echo "Installing: ipvsadm docker kubelet kubeadm kubectl..."
-apt update && apt install -y ipvsadm docker-ce=18.06.0~ce~3-0~ubuntu kubelet=1.12.1-02 kubernetes-cni=0.6.0-00  kubeadm=1.12.1-02 kubectl=1.12.1-02
+apt update && apt install -y ipvsadm docker-ce=18.06.0~ce~3-0~ubuntu kubelet=1.17.3-00 kubernetes-cni=0.7.5-00  kubeadm=1.17.3-00 kubectl=1.17.3-00
 
 echo "Enabling and Restarting services..."
 systemctl enable docker && systemctl restart docker
@@ -81,15 +81,15 @@ sleep 30
 
 echo "Installing Kubernetes Dashboard..."
 kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
-kubectl apply -f https://raw.githubusercontent.com/ecorbett135/k8s-ubuntu-vagrant/master/addon/dashboard/dashboard-cluster-role-binding.yaml
-kubectl apply -f https://raw.githubusercontent.com/ecorbett135/k8s-ubuntu-vagrant/master/addon/dashboard/dashboard-service-account.yaml
+kubectl apply -f https://raw.githubusercontent.com/wkandek/kubernetes-dev-cluster/master/addon/dashboard/dashboard-cluster-role-binding.yaml
+kubectl apply -f https://raw.githubusercontent.com/wkandek/kubernetes-dev-cluster/master/addon/dashboard/dashboard-service-account.yaml
 
 echo "Installing Addon: Metallb (Loadbalancer)..."
-kubectl apply -f https://raw.githubusercontent.com/ecorbett135/k8s-ubuntu-vagrant/master/addon/metallb/metallb-install.yaml
-kubectl apply -f https://raw.githubusercontent.com/ecorbett135/k8s-ubuntu-vagrant/master/addon/metallb/layer2.config-yaml
+kubectl apply -f https://raw.githubusercontent.com/wkandek/kubernetes-dev-cluster/master/addon/metallb/metallb-install.yaml
+kubectl apply -f https://raw.githubusercontent.com/wkandek/kubernetes-dev-cluster/master/addon/metallb/layer2.config-yaml
 
 echo "Installing Addon Web Server..."
-kubectl apply -f https://raw.githubusercontent.com/ecorbett135/k8s-ubuntu-vagrant/master/addon/metallb/nginx-loadbalancer-test-deployment.yaml
+kubectl apply -f https://raw.githubusercontent.com/wkandek/kubernetes-dev-cluster/master/addon/metallb/nginx-loadbalancer-test-deployment.yaml
 
 echo "Starting Dashboard proxy service"
 kubectl proxy &
@@ -122,7 +122,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 
 echo "Installing: docker kubelet kubeadm kubectl..."
-apt update && apt install -y ipvsadm docker-ce=18.06.0~ce~3-0~ubuntu kubelet=1.12.1-02 kubernetes-cni=0.6.0-00  kubeadm=1.12.1-02 kubectl=1.12.1-02
+apt update && apt install -y ipvsadm docker-ce=18.06.0~ce~3-0~ubuntu kubelet=1.17.3-00 kubernetes-cni=0.7.5-00  kubeadm=1.17.3-00 kubectl=1.17.3-00
 
 echo "Enabling and Restarting services..."
 systemctl enable docker && systemctl restart docker
